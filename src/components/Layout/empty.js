@@ -1,7 +1,7 @@
 import React from "react";
 
-const LayoutEmpty = () => {
-  return <div>LayoutEmpty</div>;
+const LayoutEmpty = ({ children }) => {
+  return <div>{children}</div>;
 };
 
 export default LayoutEmpty;
