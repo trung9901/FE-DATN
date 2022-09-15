@@ -14,6 +14,9 @@ export default function Home() {
         <meta name="theme-color" content="#000000" />
       </Head>
       <HomePage />
+      
     </div>
+      
+    
   );
 }
