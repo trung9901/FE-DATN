@@ -70,10 +70,12 @@ const BookingPage = () => {
     </Form.Item>
   );
   return (
-    <div className="my-10 bg-white ">
+    <div className="my-10 ">
       <div className="w-[700px] m-auto">
-        <div className="border border-current rounded  ">
-          <h3 className="text-3xl font-bold bg-[#00502B]">Đặt lịch</h3>
+        <div className="border border-[#00502B] rounded-lg  ">
+          <h3 className="text-2xl font-bold bg-[#00502B] text-white p-3 rounded-t-lg">
+            Đặt lịch
+          </h3>
           <div className="m-5">
             <div className="mx-5">
               <Form
