@@ -1,15 +1,24 @@
 import React from "react";
-import Footer from "../Client/Footer";
-import Header from "../Client/Header";
+import Footers from "../Client/Footer";
+import Headers from "../Client/Header";
 
-const Layout = ({ children }) => {
+import { Layout } from "antd";
+const { Header, Footer, Sider, Content } = Layout;
+
+const LayoutMain = ({ children }) => {
   return (
     <>
-      <Header />
-      <main>{children}</main>
-      <Footer />
+      <Layout>
+        <Header>
+          <Headers />
+        </Header>
+        <Content> {children}</Content>
+        <Footer>
+          <Footers />
+        </Footer>
+      </Layout>
     </>
   );
 };
 
-export default Layout;
+export default LayoutMain;
