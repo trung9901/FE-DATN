@@ -3,7 +3,7 @@ import Footers from "../Client/Footer";
 import Headers from "../Client/Header";
 
 import { Layout } from "antd";
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Content, Footer } = Layout;
 
 const LayoutMain = ({ children }) => {
   return (
@@ -12,7 +12,7 @@ const LayoutMain = ({ children }) => {
         <Header>
           <Headers />
         </Header>
-        <Content> {children}</Content>
+        <Content>{children}</Content>
         <Footer>
           <Footers />
         </Footer>
