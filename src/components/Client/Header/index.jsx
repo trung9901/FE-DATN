@@ -6,7 +6,7 @@ const Headers = () => {
   return (
     <>
         <div className="bg-[#005E2E] ">
-          <header className="h-[84px] max-w-full m-auto py-[29px]  pl-[200px] ">
+          <header className="h-[84px] w-[1920px] max-w-full m-auto py-[29px]  pl-[200px] ">
               <div className="header-menu">
                   <nav>
                   <div className="mb-[0px] flex">

@@ -4,19 +4,19 @@ const Footers = () => {
   return (
     <>
       <div>
-        <div className="background bg-[#01321f] pl-[170px] pr-[80px]">
-          <div className="max-w-full m-auto grid grid-cols-3 pt-[20px] gap-[20px]  ">
-            <div className=" px-[20px] text-center ">
+        <div className="background bg-[#01321f] pl-[100px] pr-[100px]">
+          <div className="max-w-full w-[1920px] m-auto grid grid-cols-3 pt-[20px] gap-[20px]  ">
+            <div className="px-[90px]">
               <div>
                 <img src="https://beautyspa4.shostweb.com/wp-content/uploads/2021/12/logo-spa-4.svg" alt="" width={180} />
               </div>
               <p className="pt-[10px] leading-5 text-[#FFFFFF] text-[16px]">Một sản phẩm của NinhbinhWeb</p>
               <p className=" leading-5 text-[#FFFFFF]  text-[16px]">Tặng chúng tôi 1 ly cafe Ban Mê nhé!</p>
             </div>
-            <div className="mr-5">
+            <div className="mr-10">
               <h4 className="text-[#FFFFFF] text-[17px] ">CÔNG TY CỔ PHẦN THẨM MỸ THU CÚC</h4>
-              <p className="text-[16px] text-[#FFFFFF] text-center">BỆNH VIỆN THẨM MỸ THU CÚC</p>
-              <p className="text-[16px] text-[#FFFFFF] text-center">1B YẾT KIÊU, HAI BÀ TRƯNG, HÀ NỘI</p>
+              <p className="text-[16px] text-[#FFFFFF] ml-5">BỆNH VIỆN THẨM MỸ THU CÚC</p>
+              <p className="text-[16px] text-[#FFFFFF] ml-5">1B YẾT KIÊU, HAI BÀ TRƯNG, HÀ NỘI</p>
               <p className="text-[13px] text-[#FFFFFF]">Tổng đài: 1900 1920</p>
               <p className="text-[13px] text-[#FFFFFF]">Hotline: 0964 080 999</p>
               <p className="text-[13px] text-[#FFFFFF]">contact@thucucclinics.vn</p>
