@@ -8,15 +8,11 @@ const { Header, Footer, Sider, Content } = Layout;
 const LayoutMain = ({ children }) => {
   return (
     <>
-      <Layout>
-        <Header>
-          <Headers />
-        </Header>
+      
+         <Headers />
         <Content> {children}</Content>
-        <Footer>
           <Footers />
-        </Footer>
-      </Layout>
+        
     </>
   );
 };
