@@ -9,7 +9,7 @@ import {
   DatePicker,
   Space,
 } from "antd";
-
+import moment from "moment";
 // ------------------------------------------------------------------------------------------------
 const layout = {
   labelCol: {
@@ -55,6 +55,26 @@ const onChange1 = (value, dateString) => {
 const onOk = (value) => {
   console.log("onOk: ", value);
 };
+const disabledDate = (current) => {
+  // Can not select days before today and today
+  return current && current < moment().endOf("day");
+};
+const disabledDateTime = () => ({
+  disabledHours: () => range(0, 24).splice(4, 20),
+  disabledMinutes: () => range(30, 60),
+  disabledSeconds: () => [55, 56],
+});
+const { RangePicker } = DatePicker;
+
+const range = (start, end) => {
+  const result = [];
+
+  for (let i = start; i < end; i++) {
+    result.push(i);
+  }
+
+  return result;
+};
 // ------------------------------------------------------------------------------------------------
 const BookingPage = () => {
   const prefixSelector = (
@@ -86,6 +106,7 @@ const BookingPage = () => {
                   prefix: "+84",
                 }}
               >
+                {/* Tên */}
                 <Form.Item
                   name={["user", "name"]}
                   label="Tên "
@@ -97,6 +118,23 @@ const BookingPage = () => {
                 >
                   <Input />
                 </Form.Item>
+
+                {/* Tuổi */}
+                <Form.Item
+                  name={["user", "age"]}
+                  label="Tuổi"
+                  rules={[
+                    {
+                      type: "number",
+                      min: 0,
+                      max: 99,
+                    },
+                  ]}
+                >
+                  <InputNumber />
+                </Form.Item>
+
+                {/* Email */}
                 <Form.Item
                   name={["user", "email"]}
                   label="Email"
@@ -109,6 +147,8 @@ const BookingPage = () => {
                 >
                   <Input />
                 </Form.Item>
+
+                {/* SĐT */}
                 <Form.Item
                   name="phone"
                   label="Số điện thoại"
@@ -127,20 +167,8 @@ const BookingPage = () => {
                     }}
                   />
                 </Form.Item>
-                <Form.Item
-                  name={["user", "age"]}
-                  label="Tuổi"
-                  rules={[
-                    {
-                      type: "number",
-                      min: 0,
-                      max: 99,
-                    },
-                  ]}
-                >
-                  <InputNumber />
-                </Form.Item>
 
+                {/* Các dịch vụ */}
                 <Form.Item
                   name={["user", "oders"]}
                   label="Lựa chọn dịch vụ"
@@ -153,6 +181,7 @@ const BookingPage = () => {
                   <Checkbox.Group options={options} onChange={onChange} />
                 </Form.Item>
 
+                {/* Chọn ngày đặt lich */}
                 <Form.Item
                   name={["user", "date"]}
                   label="Chọn ngày"
@@ -162,12 +191,23 @@ const BookingPage = () => {
                     },
                   ]}
                 >
-                  <DatePicker showTime onChange={onChange1} onOk={onOk} />
+                  <DatePicker
+                    disabledDate={disabledDate}
+                    disabledTime={disabledDateTime}
+                    showTime={{
+                      defaultValue: moment("00:00:00", "HH:mm:ss"),
+                    }}
+                    onChange={onChange1}
+                    onOk={onOk}
+                  />
                 </Form.Item>
 
+                {/* Ghi chú */}
                 <Form.Item name={["user", "introduction"]} label="Ghi chú">
                   <Input.TextArea />
                 </Form.Item>
+
+                {/* button */}
                 <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
                   <Button type="primary" htmlType="submit">
                     Đặt lịch

@@ -22,3 +22,6 @@
     display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
+.ant-btn-primary {
+    background-color: #00502B;
+}
