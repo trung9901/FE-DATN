@@ -8,6 +8,7 @@ const { Header, Footer, Sider, Content } = Layout;
 const LayoutMain = ({ children }) => {
   return (
     <>
+    <div class="max-w-screen-2xl">
       <Layout>
         <Header>
           <Headers />
@@ -17,6 +18,7 @@ const LayoutMain = ({ children }) => {
           <Footers />
         </Footer>
       </Layout>
+    </div>
     </>
   );
 };
