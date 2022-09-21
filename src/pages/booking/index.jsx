@@ -10,6 +10,9 @@ import {
   Space,
 } from "antd";
 import moment from "moment";
+import { useForm } from "react-hook-form";
+import useBooking from "../../hooks/use-booking";
+import Loading from "../../components/Client/loading";
 // ------------------------------------------------------------------------------------------------
 const layout = {
   labelCol: {
@@ -23,7 +26,7 @@ const { Option } = Select;
 const validateMessages = {
   required: "${label} is required!",
   types: {
-    email: "${label} is not a valid email!",
+    email: "${label} khong dung dinh dang email!",
     number: "${label} is not a valid number!",
   },
   number: {
@@ -32,8 +35,8 @@ const validateMessages = {
 };
 const options = [
   {
-    label: "Apple",
-    value: "Apple",
+    label: "qua tao",
+    value: "qua tao",
   },
   {
     label: "Pear",
@@ -71,20 +74,29 @@ const range = (start, end) => {
 
   return result;
 };
+
+const prefixSelector = (
+  <Form.Item name="prefix" noStyle>
+    <Select
+      style={{
+        width: 70,
+      }}
+    >
+      <Option value="86">+84</Option>
+      <Option value="87">+87</Option>
+    </Select>
+  </Form.Item>
+);
 // ------------------------------------------------------------------------------------------------
 const BookingPage = () => {
-  const prefixSelector = (
-    <Form.Item name="prefix" noStyle>
-      <Select
-        style={{
-          width: 70,
-        }}
-      >
-        <Option value="86">+84</Option>
-        <Option value="87">+87</Option>
-      </Select>
-    </Form.Item>
-  );
+  const { data: bookings, error } = useBooking()
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const onSubmit = (data) => {
+
+    console.log("submit", data.user.name)
+  };
+  if (error) return <div>failed to load</div>;
+  if (!bookings) return <div><Loading /></div>;
   return (
     <div className="my-10 ">
       <div className="w-[700px] m-auto">
@@ -94,6 +106,7 @@ const BookingPage = () => {
           </h3>
           <div className="m-5">
             <div className="mx-5">
+
               <Form
                 {...layout}
                 name="nest-messages"
@@ -101,6 +114,8 @@ const BookingPage = () => {
                 initialValues={{
                   prefix: "+84",
                 }}
+
+                onFinish={onSubmit}
               >
                 {/* Tên */}
                 <Form.Item
