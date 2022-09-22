@@ -14,6 +14,7 @@ export default function Home() {
         <meta name="theme-color" content="#000000" />
       </Head>
       <HomePage />
+      <h2>quan</h2>
       
     </div>
       
