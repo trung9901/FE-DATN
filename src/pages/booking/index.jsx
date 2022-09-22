@@ -50,10 +50,7 @@ const options = [
 const onChange = (checkedValues) => {
   console.log("checked = ", checkedValues);
 };
-const onChange1 = (value, dateString) => {
-  console.log("Selected Time: ", value);
-  console.log("Formatted Selected Time: ", dateString);
-};
+
 
 const onOk = (value) => {
   console.log("onOk: ", value);
@@ -95,6 +92,16 @@ const BookingPage = () => {
 
     console.log("submit", data.user.name)
   };
+  const onChange1 = (value, dateString) => {
+    console.log("Selected Time: ", value);
+    console.log("Formatted Selected Time: ", dateString);
+    console.log(moment(dateString).format('LT'))
+
+  };
+
+
+
+
   if (error) return <div>failed to load</div>;
   if (!bookings) return <div><Loading /></div>;
   return (
