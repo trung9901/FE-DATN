@@ -10,7 +10,7 @@ import {
   Space,
 } from "antd";
 import moment from "moment";
-import { useForm } from "react-hook-form";
+
 import useBooking from "../../hooks/use-booking";
 import Loading from "../../components/Client/loading";
 // ------------------------------------------------------------------------------------------------
@@ -24,9 +24,9 @@ const layout = {
 };
 const { Option } = Select;
 const validateMessages = {
-  required: "${label} is required!",
+  required: "${label} không được để trống!",
   types: {
-    email: "${label} khong dung dinh dang email!",
+    email: "${label} không đúng định dạng!",
     number: "${label} is not a valid number!",
   },
   number: {
@@ -82,15 +82,15 @@ const prefixSelector = (
         width: 70,
       }}
     >
-      <Option value="86">+84</Option>
+      <Option value="84">+84</Option>
       <Option value="87">+87</Option>
     </Select>
   </Form.Item>
 );
 // ------------------------------------------------------------------------------------------------
 const BookingPage = () => {
-  const { data: bookings, error } = useBooking()
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { data: bookings, error, getEmployeeByBookingDays } = useBooking()
+
   const onSubmit = (data) => {
 
     console.log("submit", data.user.name)
@@ -117,6 +117,7 @@ const BookingPage = () => {
 
                 onFinish={onSubmit}
               >
+
                 {/* Tên */}
                 <Form.Item
                   name={["user", "name"]}
@@ -161,13 +162,13 @@ const BookingPage = () => {
 
                 {/* SĐT */}
                 <Form.Item
-                  name="phone"
+                  name={["user", "phone"]}
                   label="Số điện thoại"
                   rules={[
                     {
                       required: true,
-                      type: "phone",
-                      message: "Please input your phone number!",
+                      // type: "phone",
+                      // message: "Please input your phone number!",
                     },
                   ]}
                 >
@@ -210,7 +211,7 @@ const BookingPage = () => {
                 </Form.Item>
 
                 {/* Ghi chú */}
-                <Form.Item name={["user", "introduction"]} label="Ghi chú">
+                <Form.Item name={["user", "note"]} label="Ghi chú">
                   <Input.TextArea />
                 </Form.Item>
 
