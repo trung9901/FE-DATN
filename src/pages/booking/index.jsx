@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Form,
@@ -13,6 +13,7 @@ import moment from "moment";
 
 import useBooking from "../../hooks/use-booking";
 import Loading from "../../components/Client/loading";
+import useEmployees from "../../hooks/use-employees";
 // ------------------------------------------------------------------------------------------------
 const layout = {
   labelCol: {
@@ -51,7 +52,6 @@ const onChange = (checkedValues) => {
   console.log("checked = ", checkedValues);
 };
 
-
 const onOk = (value) => {
   console.log("onOk: ", value);
 };
@@ -86,24 +86,41 @@ const prefixSelector = (
 );
 // ------------------------------------------------------------------------------------------------
 const BookingPage = () => {
-  const { data: bookings, error, getEmployeeByBookingDays } = useBooking()
-
+  const { data: bookings, error, getEmployeeByBookingDays } = useBooking();
+  const { data: employees } = useEmployees();
+  const [shift, setShift] = useState([]);
+  const [datamap, setDatamap] = useState([]);
   const onSubmit = (data) => {
-
-    console.log("submit", data.user.name)
+    console.log("submit", data.user.name);
   };
   const onChange1 = (value, dateString) => {
-    console.log("Selected Time: ", value);
-    console.log("Formatted Selected Time: ", dateString);
-    console.log(moment(dateString).format('LT'))
-
+    // console.log("Selected Time: ", value);
+    // console.log("Formatted Selected Time: ", dateString);
+    // console.log(moment(dateString).format("X"));
+    // const query = moment(dateString).format("X");
+    // console.log(a);
+    // const a = getEmployeeByBookingDays(1063040400);
+    // setShift(a);
+    // console.log(shift);
   };
-
-
-
+  useEffect(() => {
+    console.log(employees);
+    // const a = employees.filter((item) => {
+    //   item.date == 1063040400;
+    // });
+    // employees.map((item) => setDatamap(item.timeWork));
+    // console.log(datamap);
+    // const a = datamap.filter((item) => item.date === 1663804800);
+    // console.log(a);
+  }, []);
 
   if (error) return <div>failed to load</div>;
-  if (!bookings) return <div><Loading /></div>;
+  if (!bookings)
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
   return (
     <div className="my-10 ">
       <div className="w-[700px] m-auto">
@@ -113,7 +130,6 @@ const BookingPage = () => {
           </h3>
           <div className="m-5">
             <div className="mx-5">
-
               <Form
                 {...layout}
                 name="nest-messages"
@@ -121,10 +137,8 @@ const BookingPage = () => {
                 initialValues={{
                   prefix: "+84",
                 }}
-
                 onFinish={onSubmit}
               >
-
                 {/* Tên */}
                 <Form.Item
                   name={["user", "name"]}
@@ -216,7 +230,16 @@ const BookingPage = () => {
                     onOk={onOk}
                   />
                 </Form.Item>
-
+                {/* chọn nhân viên */}
+                <Form.Item label="Select">
+                  <Select>
+                    {employees.map((item) => (
+                      <Select.Option value={item.name} key={item.name}>
+                        {item.name}
+                      </Select.Option>
+                    ))}
+                  </Select>
+                </Form.Item>
                 {/* Ghi chú */}
                 <Form.Item name={["user", "note"]} label="Ghi chú">
                   <Input.TextArea />
