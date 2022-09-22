@@ -108,10 +108,10 @@ const BookingPage = () => {
     // const a = employees.filter((item) => {
     //   item.date == 1063040400;
     // });
-    // employees.map((item) => setDatamap(item.timeWork));
-    // console.log(datamap);
-    // const a = datamap.filter((item) => item.date === 1663804800);
-    // console.log(a);
+    employees?.map((item) => setDatamap(item.timeWork));
+    console.log(datamap);
+    const a = datamap.filter((item) => item.date === 1663804800);
+    console.log(a);
   }, []);
 
   if (error) return <div>failed to load</div>;
@@ -230,16 +230,20 @@ const BookingPage = () => {
                     onOk={onOk}
                   />
                 </Form.Item>
+
                 {/* chọn nhân viên */}
-                <Form.Item label="Select">
+                <Form.Item label="Chọn nhân viên">
                   <Select>
-                    {employees.map((item) => (
-                      <Select.Option value={item.name} key={item.name}>
+                    {employees?.map((item) => (
+                      <Select.Option value={item._id} key={item.name}>
                         {item.name}
                       </Select.Option>
                     ))}
                   </Select>
                 </Form.Item>
+
+                {/* chọn ca  */}
+
                 {/* Ghi chú */}
                 <Form.Item name={["user", "note"]} label="Ghi chú">
                   <Input.TextArea />
