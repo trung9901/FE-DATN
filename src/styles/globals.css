@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.ant-layout-header {
+    background-color: #FFFF !important;
+}
+
+.each-slide>div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 500px;
+}
+
+.each-slide span {
+    font-size: 20px;
+    background: #efefef;
+    text-align: center;
+}
+
+.menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.bannerslide {
+    background-image: url('https://res.cloudinary.com/ecommercer/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1663514767/green-bg_febxhp.jpg');
+
+
+}
+
+.formrmd input {
+    width: 100%;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+.formrmd button:hover {
+    background-color: #00502b;
+    color: white;
+    transition: .4s;
+
+}
