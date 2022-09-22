@@ -5,7 +5,7 @@ import "antd/dist/antd.css";
 function MyApp({ Component, pageProps }) {
   const LayoutWrapper = Component.Layout ?? LayoutMain;
   return (
-    <div className=" min-w-full m-auto">
+    <div className="max-w-full m-auto">
       <LayoutWrapper>
         <Component {...pageProps} />
       </LayoutWrapper>

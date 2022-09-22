@@ -5,19 +5,37 @@ import Link from 'next/link'
 const Headers = () => {
   return (
     <>
-      <div className="">
-        <div className="  bg-[#005E2E] ">
-          <header className=" h-[84px] w-[1920px]  m-auto   ">
-            <div>
-              <div className="menu m-auto ">
+        <div className="bg-[#005E2E] ">
+          <header className="h-[84px] w-[1920px] max-w-full m-auto py-[29px]  pl-[200px] ">
+              <div className="header-menu">
+                  <nav>
+                  <div className="mb-[0px] flex">
+                    <Link href={"/"}><img className="flex mr-[100px]" src="https://beautyspa4.shostweb.com/wp-content/uploads/2021/12/logo-spa-4.svg" width="100px"/></Link>
+                    <div className="flex-auto w-84">
+                    <Link href={"/"} ><button className="px-[23px] text-[#fff]" >Trang chủ</button></Link>
+                    <Link href={`/products`}><button className="px-[23px] text-[#fff] ">Sản phẩm</button></Link>
+                    <Link href={"/"}><button className="px-[23px] text-[#fff]">Hỗ trợ</button></Link>
+                    <Link href={"/"}><button className="px-[23px] text-[#fff]">Hỗ trợ</button></Link>
+                    <Link href={"/"}><button className="px-[23px] text-[#fff]">Hỗ trợ</button></Link>
+                    <Link href={"/"}><button className="px-[23px] text-[#fff]">Hỗ trợ</button></Link>
+                    </div>
+                    <div className="flex-auto">
+                    <Link href={"/"} ><button className=" mx-3 rounded-md bg-[#003C21] text-[#fff] border-2 border-emerald-500 px-3">0384765490</button></Link>
+                    <Link href={"/"} ><button className=" mx-3 rounded-md bg-[#003C21] text-[#fff] border-2 border-emerald-500 px-3">Đăng nhập</button></Link>
+                    <Link href={"/"} ><button className=" mx-3 rounded-md bg-[#003C21] text-[#fff] border-2 border-emerald-500 px-3">Đăng ký</button></Link>
+                  </div>
+                    </div>
+                  </nav>
+              </div>
+            {/* <div>
+              <div className="menu">
                 <div>
-                  <figure className="">
+                <figure className="">
                     <Link href={'/'}>
-                      <p><img src="https://beautyspa4.shostweb.com/wp-content/uploads/2021/12/logo-spa-4.svg" width="200px" className="ml-[450px]" /></p>
+                      <img src="https://beautyspa4.shostweb.com/wp-content/uploads/2021/12/logo-spa-4.svg" width="20px" className="ml-[450px]" />
                     </Link>
                   </figure>
-                </div>
-                <div>
+                  <nav>
                   <ul className=" pl-10 pt-[25px]">
                     <Link href={"/"} ><button className="px-[23px] text-[#fff]" >Trang chủ</button></Link>
                     <Link href={`/products`}><button className="px-[23px] text-[#fff] ">Sản phẩm</button></Link>
@@ -26,22 +44,18 @@ const Headers = () => {
                     <Link href={"/"}><button className="px-[23px] text-[#fff]">Hỗ trợ</button></Link>
                     <Link href={"/"}><button className="px-[23px] text-[#fff]">Hỗ trợ</button></Link>
                   </ul>
+                  </nav>
                 </div>
                 <div>
                   <div className="">
-                    <Link href={"/"} ><button className="rounded-md bg-[#003C21] text-[#fff] border-2 border-emerald-500">Đặt Lịch</button></Link>
+                  
                   </div>
                 </div>
 
               </div>
-
-            </div>
-
+            </div> */}
           </header>
         </div>
-
-
-      </div>
     </>
   )
 };
