@@ -8,9 +8,9 @@ const { Header, Content, Footer } = Layout;
 const LayoutMain = ({ children }) => {
   return (
     <>
-         <Headers />
-        <Content> {children}</Content>
-          <Footers />
+      <Headers />
+      <Content> {children}</Content>
+      <Footers />
     </>
   );
 };
