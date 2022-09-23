@@ -27,12 +27,12 @@ const Sidebar = () => {
     };
   }
   const items = [
-    getItem(<Link href={"service"}>Service</Link>, '1',<PieChartOutlined />),
-    getItem( <Link href={"shift"}>Shift</Link>, '2', <DesktopOutlined />),
-    getItem(<Link href={"employee"}>Employee</Link>, '3', <UserOutlined />),
-    getItem(<Link href={"user"}>User</Link>, '4', <UserOutlined />),
+    getItem(<Link href={"/admin/service"}>Service</Link>, '1',<PieChartOutlined />),
+    getItem( <Link href={"/admin/shift"}>Shift</Link>, '2', <DesktopOutlined />),
+    getItem(<Link href={"/admin/employee"}>Employee</Link>, '3', <UserOutlined />),
+    getItem(<Link href={"/admin/user"}>User</Link>, '4', <UserOutlined />),
     // getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
-    getItem(<Link href={"contact"}>Contact</Link>, '5', <FileOutlined />),
+    getItem(<Link href={"/admin/contact"}>Contact</Link>, '5', <FileOutlined />),
   ];
 
   return <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
