@@ -14,6 +14,8 @@ import moment from "moment";
 import useBooking from "../../hooks/use-booking";
 import Loading from "../../components/Client/loading";
 import useEmployees from "../../hooks/use-employees";
+
+import EmployeeModal from "../../components/Client/EmployeeModal"
 // ------------------------------------------------------------------------------------------------
 const layout = {
   labelCol: {
@@ -51,7 +53,6 @@ const options = [
 const onChange = (checkedValues) => {
   console.log("checked = ", checkedValues);
 };
-
 const onOk = (value) => {
   console.log("onOk: ", value);
 };
@@ -85,11 +86,15 @@ const prefixSelector = (
   </Form.Item>
 );
 // ------------------------------------------------------------------------------------------------
+
+
+
+
 const BookingPage = () => {
-  const { data: bookings, error, getEmployeeByBookingDays } = useBooking();
-  const { data: employees } = useEmployees();
-  const [shift, setShift] = useState([]);
-  const [datamap, setDatamap] = useState([]);
+
+  const { data: employees, error } = useEmployees();
+
+
   const onSubmit = (data) => {
     console.log("submit", data.user.name);
   };
@@ -103,19 +108,31 @@ const BookingPage = () => {
     // setShift(a);
     // console.log(shift);
   };
+  // ------------------------------------------------------------------------------------------------
+  const [id, setId] = useState("")
+  const [open, setOpen] = useState(false)
+  const onChangeSelected = (value) => {
+    setId(value)
+  }
+
+  // ------------------------------------------------------------------------------------------------
   useEffect(() => {
-    console.log(employees);
+    // console.log(employees);
     // const a = employees.filter((item) => {
     //   item.date == 1063040400;
     // });
-    employees?.map((item) => setDatamap(item.timeWork));
-    console.log(datamap);
-    const a = datamap.filter((item) => item.date === 1663804800);
-    console.log(a);
-  }, []);
+    console.log(employees);
+  }, [employees]);
+
+
+
+
+
+
+
 
   if (error) return <div>failed to load</div>;
-  if (!bookings)
+  if (!employees)
     return (
       <div>
         <Loading />
@@ -232,18 +249,28 @@ const BookingPage = () => {
                 </Form.Item>
 
                 {/* chọn nhân viên */}
-                <Form.Item label="Chọn nhân viên">
-                  <Select>
+                <Form.Item
+                  label="Chọn nhân viên"
+                  name={["user", "employees"]}
+                  rules={[
+                    {
+                      required: true,
+                    },
+                  ]}>
+                  <Select onChange={onChangeSelected}>
                     {employees?.map((item) => (
-                      <Select.Option value={item._id} key={item.name}>
+                      <Select.Option value={item._id} key={item.name} >
                         {item.name}
+                        {/* <div className="" onClick={() => { setOpen(true) }}>{item.name}</div> */}
                       </Select.Option>
                     ))}
                   </Select>
                 </Form.Item>
 
                 {/* chọn ca  */}
-
+                <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }} >
+                  <EmployeeModal id={id} open={open} />
+                </Form.Item>
                 {/* Ghi chú */}
                 <Form.Item name={["user", "note"]} label="Ghi chú">
                   <Input.TextArea />
@@ -260,7 +287,7 @@ const BookingPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 
