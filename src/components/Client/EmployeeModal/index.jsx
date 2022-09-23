@@ -14,7 +14,7 @@ const EmployeeModal = (props) => {
 
     console.log(employees.filter((item) => item._id == props.id));
 
-    const data = employees.filter((item) => item._id == props.id)
+    const data = employees.filter((item) => item._id === props.id)
     // -------------------------------
     const opens = props.open
     const [open, setOpen] = useState(false);
@@ -54,6 +54,7 @@ const EmployeeModal = (props) => {
                 onOk={handleOk}
                 confirmLoading={confirmLoading}
                 onCancel={handleCancel}
+                centered
             >
                 <div className="">
 
