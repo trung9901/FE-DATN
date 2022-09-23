@@ -1,8 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 import Link from 'next/link'
+import { Modal } from "antd";
+import SignUp from "../../../pages/signup";
 const Headers = () => {
+  const [open, setOpen] = useState(false);
+  const [confirmLoading, setConfirmLoading] = useState(false);
+  const [modalText, setModalText] = useState('Content of the modal');
+  const [ismolDal, setIsModal] = useState();
+  const showModal = async (e) => {
+    await setOpen(true);
+    const footerModal = document.querySelector(".ant-modal-footer");
+    footerModal.style.display = "none"
+    setIsModal(e.target.getAttribute("data"))
+
+  };
+
+  const handleOk = () => {
+    setModalText('The modal will be closed after two seconds');
+    setConfirmLoading(true);
+    setTimeout(() => {
+      setOpen(false);
+      setConfirmLoading(false);
+    }, 2000);
+  };
+  // Kiểm tra nhấn signin/signup
+  const checkInUp = () => {
+    console.log(ismolDal)
+    if (ismolDal === "signin") {
+      // return <SignIn />
+    } else {
+      return <SignUp />
+    }
+  }
+
+  const handleCancel = () => {
+    console.log('Clicked cancel button');
+    setOpen(false);
+  };
+
+
   return (
     <>
         <div className="bg-[#005E2E] ">
@@ -22,7 +60,7 @@ const Headers = () => {
                     <div className="flex-auto">
                     <Link href={"/"} ><button className=" mx-3 rounded-md bg-[#003C21] text-[#fff] border-2 border-emerald-500 px-3">0384765490</button></Link>
                     <Link href={"/"} ><button className=" mx-3 rounded-md bg-[#003C21] text-[#fff] border-2 border-emerald-500 px-3">Đăng nhập</button></Link>
-                    <Link href={"/"} ><button className=" mx-3 rounded-md bg-[#003C21] text-[#fff] border-2 border-emerald-500 px-3">Đăng ký</button></Link>
+                    <button data="signup" onClick={showModal} className=" mx-3 rounded-md bg-[#003C21] text-[#fff] border-2 border-emerald-500 px-3" >Đăng ký</button>
                   </div>
                     </div>
                   </nav>
@@ -54,6 +92,17 @@ const Headers = () => {
 
               </div>
             </div> */}
+              <Modal
+            open={open}
+            onOk={handleOk}
+            confirmLoading={confirmLoading}
+            onCancel={handleCancel}
+            width={1000}
+          >
+            <p>
+              {checkInUp()}
+            </p>
+          </Modal>
           </header>
         </div>
     </>
