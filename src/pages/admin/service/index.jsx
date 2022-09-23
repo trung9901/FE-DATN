@@ -97,6 +97,7 @@ const ListService = () => {
       tags: ['cool', 'teacher'],
     },
   ];
+  
   const { Title } = Typography;
   return <div>
     <div style={{fontSize:"30px", cursor:"pointer"}} className="flex justify-between ... "><Title level={3}>List Service</Title><Link href={"/admin/service/add"}><PlusCircleFilled /></Link></div>
