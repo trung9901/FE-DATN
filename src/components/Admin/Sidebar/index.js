@@ -6,6 +6,7 @@ import {
   UserOutlined,
 } from '@ant-design/icons';
 import {Layout, Menu } from 'antd';
+import Link from 'next/link';
 import React, { useState } from 'react';
 const Sidebar = () => {
   const { Header, Content, Footer, Sider } = Layout;  
@@ -26,12 +27,12 @@ const Sidebar = () => {
     };
   }
   const items = [
-    getItem('Services', '1', <PieChartOutlined />),
-    getItem('Shift', '2', <DesktopOutlined />),
-    getItem('Employee ', '3', <UserOutlined />),
-    getItem('User ', '4', <UserOutlined />),
+    getItem(<Link href={"service"}>Service</Link>, '1',<PieChartOutlined />),
+    getItem( <Link href={"shift"}>Shift</Link>, '2', <DesktopOutlined />),
+    getItem(<Link href={"employee"}>Employee</Link>, '3', <UserOutlined />),
+    getItem(<Link href={"user"}>User</Link>, '4', <UserOutlined />),
     // getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
-    getItem('Contact', '5', <FileOutlined />),
+    getItem(<Link href={"contact"}>Contact</Link>, '5', <FileOutlined />),
   ];
 
   return <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
