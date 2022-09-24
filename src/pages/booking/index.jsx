@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Form,
@@ -10,6 +10,12 @@ import {
   Space,
 } from "antd";
 import moment from "moment";
+
+import useBooking from "../../hooks/use-booking";
+import Loading from "../../components/Client/loading";
+import useEmployees from "../../hooks/use-employees";
+
+import EmployeeModal from "../../components/Client/EmployeeModal"
 // ------------------------------------------------------------------------------------------------
 const layout = {
   labelCol: {
@@ -21,9 +27,9 @@ const layout = {
 };
 const { Option } = Select;
 const validateMessages = {
-  required: "${label} is required!",
+  required: "${label} không được để trống!",
   types: {
-    email: "${label} is not a valid email!",
+    email: "${label} không đúng định dạng!",
     number: "${label} is not a valid number!",
   },
   number: {
@@ -32,8 +38,8 @@ const validateMessages = {
 };
 const options = [
   {
-    label: "Apple",
-    value: "Apple",
+    label: "qua tao",
+    value: "qua tao",
   },
   {
     label: "Pear",
@@ -47,11 +53,6 @@ const options = [
 const onChange = (checkedValues) => {
   console.log("checked = ", checkedValues);
 };
-const onChange1 = (value, dateString) => {
-  console.log("Selected Time: ", value);
-  console.log("Formatted Selected Time: ", dateString);
-};
-
 const onOk = (value) => {
   console.log("onOk: ", value);
 };
@@ -71,20 +72,72 @@ const range = (start, end) => {
 
   return result;
 };
+
+const prefixSelector = (
+  <Form.Item name="prefix" noStyle>
+    <Select
+      style={{
+        width: 70,
+      }}
+    >
+      <Option value="84">+84</Option>
+      <Option value="87">+87</Option>
+    </Select>
+  </Form.Item>
+);
 // ------------------------------------------------------------------------------------------------
+
+
+
+
 const BookingPage = () => {
-  const prefixSelector = (
-    <Form.Item name="prefix" noStyle>
-      <Select
-        style={{
-          width: 70,
-        }}
-      >
-        <Option value="86">+84</Option>
-        <Option value="87">+87</Option>
-      </Select>
-    </Form.Item>
-  );
+
+  const { data: employees, error } = useEmployees();
+
+
+  const onSubmit = (data) => {
+    console.log("submit", data.user.name);
+  };
+  const onChange1 = (value, dateString) => {
+    // console.log("Selected Time: ", value);
+    // console.log("Formatted Selected Time: ", dateString);
+    // console.log(moment(dateString).format("X"));
+    // const query = moment(dateString).format("X");
+    // console.log(a);
+    // const a = getEmployeeByBookingDays(1063040400);
+    // setShift(a);
+    // console.log(shift);
+  };
+  // ------------------------------------------------------------------------------------------------
+  const [id, setId] = useState("")
+  const [open, setOpen] = useState(false)
+  const onChangeSelected = (value) => {
+    setId(value)
+  }
+
+  // ------------------------------------------------------------------------------------------------
+  useEffect(() => {
+    // console.log(employees);
+    // const a = employees.filter((item) => {
+    //   item.date == 1063040400;
+    // });
+    console.log(employees);
+  }, [employees]);
+
+
+
+
+
+
+
+
+  if (error) return <div>failed to load</div>;
+  if (!employees)
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
   return (
     <div className="my-10 ">
       <div className="w-[700px] m-auto">
@@ -101,6 +154,7 @@ const BookingPage = () => {
                 initialValues={{
                   prefix: "+84",
                 }}
+                onFinish={onSubmit}
               >
                 {/* Tên */}
                 <Form.Item
@@ -146,13 +200,13 @@ const BookingPage = () => {
 
                 {/* SĐT */}
                 <Form.Item
-                  name="phone"
+                  name={["user", "phone"]}
                   label="Số điện thoại"
                   rules={[
                     {
                       required: true,
-                      type: "phone",
-                      message: "Please input your phone number!",
+                      // type: "phone",
+                      // message: "Please input your phone number!",
                     },
                   ]}
                 >
@@ -194,8 +248,31 @@ const BookingPage = () => {
                   />
                 </Form.Item>
 
+                {/* chọn nhân viên */}
+                <Form.Item
+                  label="Chọn nhân viên"
+                  name={["user", "employees"]}
+                  rules={[
+                    {
+                      required: true,
+                    },
+                  ]}>
+                  <Select onChange={onChangeSelected}>
+                    {employees?.map((item) => (
+                      <Select.Option value={item._id} key={item.name} >
+                        {item.name}
+                        {/* <div className="" onClick={() => { setOpen(true) }}>{item.name}</div> */}
+                      </Select.Option>
+                    ))}
+                  </Select>
+                </Form.Item>
+
+                {/* chọn ca  */}
+                <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }} >
+                  <EmployeeModal id={id} open={open} />
+                </Form.Item>
                 {/* Ghi chú */}
-                <Form.Item name={["user", "introduction"]} label="Ghi chú">
+                <Form.Item name={["user", "note"]} label="Ghi chú">
                   <Input.TextArea />
                 </Form.Item>
 
@@ -210,7 +287,7 @@ const BookingPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 
