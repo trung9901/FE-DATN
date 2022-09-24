@@ -18,7 +18,7 @@ const HomePage = () => {
             </div>
           </div>
         </Slide>
-        <article className="mx-auto w-[1920px] ">
+        <article className="w-full max-w-[1920px] px-[10px] mx-auto relative ">
           <div className="slide-container">
 
           </div >

@@ -3,7 +3,7 @@ import React from 'react'
 export default function index() {
   return (
     <div>
-        <section class="bg-white max-w-full mx-auto">
+        <section class="bg-white max-w-[1200px] mx-auto mb-8">
 			<div class="flex mt-8 ">
 				<div class="w-[75%] pr-10">
 					<div class="">
@@ -71,17 +71,17 @@ export default function index() {
 					<div class="border-2 border-[#00502B] border-t-transparent rounded-3xl text-center pb-4">
 						<h2 class="bg-[#00502B] text-white text-[28px] font-bold text-center mb-0 rounded-tr-2xl rounded-tl-2xl">Thời gian làm việc</h2>
 						<h2 class="text-[#00502B] text-[28px] font-bold">7H00 - 19H00</h2>
-						<p class="text-[22px]">Từ thứ 2 đến Chủ nhật</p>
+						<p class="text-[22px]">Từ <strong>thứ 2</strong> đến <strong>Chủ nhật</strong></p>
 					</div>
 					<div class="text-[#00502B] border-2 border-[#00502B] border-t-transparent rounded-3xl mt-5">
 						<h2 class="bg-[#00502B] text-white text-[28px] font-bold text-center mb-4 rounded-tr-2xl rounded-tl-2xl">Dịch vụ nổi bật</h2>
 						<div class="px-4">
-							<a class="text-black block hover:text-[#036636] pb-2" href="">Điêu khắc lông mày được bao lâu?</a>
-							<a class="text-black block hover:text-[#036636] pb-2" href="">Điêu khắc lông mày hỏng có sửa được không?</a>
-							<a class="text-black block hover:text-[#036636] pb-2" href="">Có nên điêu khắc lông mày không?</a>
-							<a class="text-black block hover:text-[#036636] pb-2" href="">Chăm sóc sau khi nâng chân mày thế nào để nhanh lành?</a>
-							<a class="text-black block hover:text-[#036636] pb-2" href="">Phun môi collagen giá bao nhiêu tiền 1 lần?</a>
-							<a class="text-black block hover:text-[#036636] pb-2" href="">Phun môi có đánh son được không?</a>
+							<a class="block text-[#036636] hover:text-[#008000] font-bold pb-2" href="">Điêu khắc lông mày được bao lâu?</a>
+							<a class="block text-[#036636] hover:text-[#008000] font-bold pb-2" href="">Điêu khắc lông mày hỏng có sửa được không?</a>
+							<a class="block text-[#036636] hover:text-[#008000] font-bold pb-2" href="">Có nên điêu khắc lông mày không?</a>
+							<a class="block text-[#036636] hover:text-[#008000] font-bold pb-2" href="">Chăm sóc sau khi nâng chân mày thế nào để nhanh lành?</a>
+							<a class="block text-[#036636] hover:text-[#008000] font-bold pb-2" href="">Phun môi collagen giá bao nhiêu tiền 1 lần?</a>
+							<a class="block text-[#036636] hover:text-[#008000] font-bold pb-2" href="">Phun môi có đánh son được không?</a>
 						</div>
 					</div>
 					<div>
@@ -90,24 +90,24 @@ export default function index() {
 					<div class="border-2 border-[#00502B] border-t-transparent rounded-3xl mt-5">
 						<h2 class="bg-[#00502B] text-white text-[28px] font-bold text-center mb-4 rounded-tr-2xl rounded-tl-2xl">Có thể bạn quan tâm</h2>
 						<div class="px-4">
-							<a class="text-black flex hover:text-[#036636] pb-2" href="">
-								<img class="mr-2" src="./image/IMAGE (1).png" alt=""/>
+							<a class="flex text-[#036636] hover:text-[#008000] font-bold pb-3 pt-3" href="">
+								<img class="mr-2 w-[44px] h-[44px]" src="https://thanhthuybeauty.com/wp-content/uploads/2020/10/tu-van-3-300x167.jpg" alt=""/>
 								Rút chất liệu mũi là gì
 							</a>
-							<a class="text-black flex hover:text-[#036636] pb-2" href="">
-								<img class="mr-2" src="./image/IMAGE (2).png" alt=""/>
+							<a class="flex text-[#036636] hover:text-[#008000] font-bold pb-3 pt-3" href="">
+								<img class="mr-2 w-[44px] h-[44px]" src="https://thanhthuybeauty.com/wp-content/uploads/2020/10/tu-van-4-300x200.jpg" alt=""/>
 								Thu gọn cánh mũi
 							</a>
-							<a class="text-black flex hover:text-[#036636] pb-2" href="">
-								<img class="mr-2" src="./image/IMAGE (3).png" alt=""/>
+							<a class="flex text-[#036636] hover:text-[#008000] font-bold pb-3 pt-3" href="">
+								<img class="mr-2 w-[44px] h-[44px]" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGM9Gva3DiF5VIcb_OQV8-baXcstYB8Pay7g&usqp=CAU" alt=""/>
 								Nâng mũi High-line
 							</a>
-							<a class="text-black flex hover:text-[#036636] pb-2" href="">
-								<img class="mr-2" src="./image/IMAGE (4).png" alt=""/>
+							<a class="flex text-[#036636] hover:text-[#008000] font-bold pb-3 pt-3" href="">
+								<img class="mr-2 w-[44px] h-[44px]" src="https://thanhthuybeauty.com/wp-content/uploads/2020/10/96243980_3241418309244404_2262902871081091072_o-300x256.jpg" alt=""/>
 								Nâng mũi NanoCell 4.0
 							</a>
-							<a class="text-black flex hover:text-[#036636] pb-2" href="">
-								<img class="mr-2" src="./image/IMAGE (5).png" alt=""/>
+							<a class="flex text-[#036636] hover:text-[#008000] font-bold pb-3 pt-3" href="">
+								<img class="mr-2 w-[44px] h-[44px]" src="https://thanhthuybeauty.com/wp-content/uploads/2020/10/96372996_3233515503368018_4629360027893760000_o.jpg" alt=""/>
 								Nâng mũi BisCell
 							</a>
 						</div>
@@ -117,19 +117,19 @@ export default function index() {
 						<video class="rounded-b-[22px] w-[100%]" src="./image/Rectangle.png" controls></video>
 					</div>
 
-					<div class="border-2 border-[#00502B] border-t-transparent rounded-3xl mt-10 ">
+					<div class="border-2 border-[#00502B] border-t-transparent rounded-3xl mt-5 ">
 						<h2 class="bg-[#00502B] text-white text-[28px] font-bold text-center mb-0 rounded-tr-2xl rounded-tl-2xl">Câu chuyện khác hàng</h2>
 						<div class="px-4">
-							<a class="text-black flex hover:text-[#036636] pb-2" href="">
-								<img class="mr-2" src="./image/IMAGE (6).png" alt=""/>
+							<a class="flex text-[#036636] hover:text-[#008000] pb-3 pt-3 font-bold" href="">
+								<img class="mr-2 w-[44px] h-[44px]" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUfp-LxsSFZkebtyf143IKldTeRbGZq1zemQ&usqp=CAU" alt=""/>
 								Điêu khắc lông mày được bao lâu?
 							</a>
-							<a class="text-black flex hover:text-[#036636] pb-2" href="">
-								<img class="mr-2" src="./image/IMAGE (7).png" alt=""/>
+							<a class="flex text-[#036636] hover:text-[#008000] pb-3 pt-3 font-bold" href="">
+								<img class="mr-2 w-[44px] h-[44px]" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9g6bCNhOormxufV3rGvu9CHnLM8ju8Wn_aw&usqp=CAU" alt=""/>
 								Điêu khắc lông mày hỏng có sửa được không?
 							</a>
-							<a class="text-black flex hover:text-[#036636] pb-2" href="">
-								<img class="mr-2" src="./image/IMAGE (8).png" alt=""/>
+							<a class="flex text-[#036636] hover:text-[#008000] pb-3 pt-3 font-bold" href="">
+								<img class="mr-2 w-[44px] h-[44px]" src="https://thanhthuybeauty.com/wp-content/uploads/2020/10/tu-van-1-300x300.jpg" alt=""/>
 								Có nên điêu khắc lông mày không?
 							</a>
 						</div>
