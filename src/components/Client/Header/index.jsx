@@ -3,7 +3,9 @@ import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 import Link from 'next/link'
 import { Modal } from "antd";
+import SignUp from "../../../pages/signup";
 import SignIn from "../../../pages/signin";
+
 const Headers = () => {
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
@@ -31,7 +33,7 @@ const Headers = () => {
     if (ismolDal === "signin") {
       return <SignIn />
     } else {
-      // return <SignUp />
+      return <SignUp />
     }
   }
 
@@ -39,12 +41,6 @@ const Headers = () => {
     console.log('Clicked cancel button');
     setOpen(false);
   };
-
-//   const headerCss = {
-//     position:"fixed",
-//     width:"100%",
-//     zIndex: "1000",
-// }
 
   return (
     <>
@@ -64,6 +60,7 @@ const Headers = () => {
                     </div>
                     <div className="flex-auto">
                     <Link href={"/"} ><button className=" mx-3 rounded-md bg-[#003C21] text-[#fff] border-2 border-emerald-500 px-3">0384765490</button></Link>
+
                     <button data="signin" onClick={showModal} className=" mx-3 rounded-md bg-[#003C21] text-[#fff] border-2 border-emerald-500 px-3">Đăng nhập</button>
                   <button data="signup" onClick={showModal} className=" mx-3 rounded-md bg-[#003C21] text-[#fff] border-2 border-emerald-500 px-3" >Đăng ký</button>
                   </div>
@@ -97,6 +94,7 @@ const Headers = () => {
 
               </div>
             </div> */}
+
             <Modal
             open={open}
             onOk={handleOk}
