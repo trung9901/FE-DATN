@@ -15,7 +15,7 @@ import useBooking from "../../hooks/use-booking";
 import Loading from "../../components/Client/loading";
 import useEmployees from "../../hooks/use-employees";
 
-import EmployeeModal from "../../components/Client/EmployeeModal"
+import EmployeeModal from "../../components/Client/EmployeeModal";
 // ------------------------------------------------------------------------------------------------
 const layout = {
   labelCol: {
@@ -38,16 +38,16 @@ const validateMessages = {
 };
 const options = [
   {
-    label: "qua tao",
-    value: "qua tao",
+    label: "dich vu 1",
+    value: "1",
   },
   {
-    label: "Pear",
-    value: "Pear",
+    label: "dich vu 2",
+    value: "2",
   },
   {
-    label: "Orange",
-    value: "Orange",
+    label: "dich vu 3",
+    value: "3",
   },
 ];
 const onChange = (checkedValues) => {
@@ -87,13 +87,8 @@ const prefixSelector = (
 );
 // ------------------------------------------------------------------------------------------------
 
-
-
-
 const BookingPage = () => {
-
   const { data: employees, error } = useEmployees();
-
 
   const onSubmit = (data) => {
     console.log("submit", data.user.name);
@@ -109,12 +104,14 @@ const BookingPage = () => {
     // console.log(shift);
   };
   // ------------------------------------------------------------------------------------------------
-  const [id, setId] = useState("")
-  const [open, setOpen] = useState(false)
+  const [id, setId] = useState("");
+  const [open, setOpen] = useState(false);
   const onChangeSelected = (value) => {
-    setId(value)
-  }
-
+    setId(value);
+  };
+  const onHandleAdd = (value) => {
+    console.log("cha:", value);
+  };
   // ------------------------------------------------------------------------------------------------
   useEffect(() => {
     // console.log(employees);
@@ -123,13 +120,6 @@ const BookingPage = () => {
     // });
     console.log(employees);
   }, [employees]);
-
-
-
-
-
-
-
 
   if (error) return <div>failed to load</div>;
   if (!employees)
@@ -148,6 +138,7 @@ const BookingPage = () => {
           <div className="m-5">
             <div className="mx-5">
               <Form
+                onAdd={onHandleAdd}
                 {...layout}
                 name="nest-messages"
                 validateMessages={validateMessages}
@@ -254,12 +245,13 @@ const BookingPage = () => {
                   name={["user", "employees"]}
                   rules={[
                     {
-                      required: true,
+                      // required: true,
                     },
-                  ]}>
+                  ]}
+                >
                   <Select onChange={onChangeSelected}>
                     {employees?.map((item) => (
-                      <Select.Option value={item._id} key={item.name} >
+                      <Select.Option value={item._id} key={item.name}>
                         {item.name}
                         {/* <div className="" onClick={() => { setOpen(true) }}>{item.name}</div> */}
                       </Select.Option>
@@ -268,7 +260,7 @@ const BookingPage = () => {
                 </Form.Item>
 
                 {/* chọn ca  */}
-                <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }} >
+                <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
                   <EmployeeModal id={id} open={open} />
                 </Form.Item>
                 {/* Ghi chú */}
@@ -287,7 +279,7 @@ const BookingPage = () => {
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 
